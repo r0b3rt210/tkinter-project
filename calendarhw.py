@@ -13,10 +13,14 @@ def show_calendar():
     text1.insert(tkinter.END , calendartext)
     text1.grid(row = 1 , column=1)
     screen2.mainloop()
+def exit():
+    screen.destroy()
+
+
 calendarr = tkinter.Label(screen , text = "Calendar" , background="gray" , fg = "black" , font=("Arial" , 54))
 enteryear = tkinter.Label(screen , text = "Enter Year" , background ="green" , fg = "black", font=("Arial" , 20))
 showc = tkinter.Button(screen , text = "show calendar" , background="red" , fg = "black", font=("Arial" , 20), command = show_calendar)
-exit = tkinter.Button(screen , text = "exit" , background ="red" , fg = "black", font=("Arial" , 20))
+exit = tkinter.Button(screen , text = "exit" , background ="red" , fg = "black", font=("Arial" , 20) , command = exit)
 entertext = tkinter.Entry(screen , font=("Arial" , 18))
 calendarr.grid(row = 1, column=1)
 enteryear.grid(row=2,column=1)
