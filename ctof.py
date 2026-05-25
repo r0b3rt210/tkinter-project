@@ -1,0 +1,15 @@
+import tkinter
+screen = tkinter.Tk()
+screen.geometry("400x150")
+screen.title("celsius to fahrenheit")
+def convertt():
+    temp = int(usertemp.get())
+    temp_inf= tkinter.Label(screen , text=f"temperature in fahrenheit:  {temp*33.8}")
+    temp_inf.grid(row=2 , column=1)
+enter_temp = tkinter.Label(screen , text  = "Enter the temperature in celsius:  ")
+usertemp = tkinter.Entry(screen)
+convert = tkinter.Button(screen , text = "Convert", background ="green" ,command = convertt )
+enter_temp.grid(row=1 , column=1)
+usertemp.grid(row=1 , column=2)
+convert.grid(row=3 , column=1)
+screen.mainloop()
