@@ -12,18 +12,20 @@ title = tkinter.Label(screen , text = "multipliction table")
 numberandrange = tkinter.Label(screen , text="enter number and range:")
 usernumber = tkinter.ttk.Combobox(screen , values=numbers)
 
+rangee = tkinter.IntVar()
+
 def multiplication():
     numberselected = int(usernumber.get())
     answers = ""
-    for i in range(21):
+    for i in range(rangee.get() + 1):
         answers = answers + f"{numberselected} x  {i} = {numberselected*i}\n"#\n inserts a new line
     
     result.config(text = answers)
 
 
-range10 = tkinter.Radiobutton(screen , text=10)
-range20 = tkinter.Radiobutton(screen , text=20)
-range30 = tkinter.Radiobutton(screen , text=30)
+range10 = tkinter.Radiobutton(screen , text=10, variable= rangee ,value= 10)
+range20 = tkinter.Radiobutton(screen , text=20, variable= rangee,value=20)
+range30 = tkinter.Radiobutton(screen , text=30, variable= rangee,value=30)
 execute = tkinter.Button(screen , text="generate" , command = multiplication)
 result = tkinter.Label(screen , text="")
 title.grid(row = 1 , column=2)
