@@ -1,0 +1,30 @@
+import tkinter
+import tkinter.messagebox
+screen = tkinter.Tk()
+screen.geometry("450x650")
+screen.title("Address Book")
+title = tkinter.Label(screen, text = "My Adress Book")
+open = tkinter.Button(screen , text = "Open")
+box = tkinter.Listbox(screen)
+name= tkinter.Label(screen, text = "name:")
+nameinp = tkinter.Entry(screen )
+address= tkinter.Label(screen, text = "address:")
+addressinp = tkinter.Entry(screen )
+mobile= tkinter.Label(screen, text = "mobile:")
+mobileinp = tkinter.Entry(screen )
+email= tkinter.Label(screen, text = "email:")
+emailinp = tkinter.Entry(screen )
+birthday= tkinter.Label(screen, text = "birthday:")
+birthdayinp = tkinter.Entry(screen )
+
+emailinp = tkinter.Entry(screen )
+mobileinp = tkinter.Entry(screen )
+addressinp = tkinter.Entry(screen )
+title.grid(row=1,column= 1)
+open.grid(row=1,column= 2)
+box.grid(row=2,column= 1)
+name.grid(row=2,column= 2)
+nameinp.grid(row=2,column=3)
+title.grid(row=5,column= 2)
+
+
