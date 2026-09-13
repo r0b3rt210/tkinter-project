@@ -16,15 +16,55 @@ email= tkinter.Label(screen, text = "email:")
 emailinp = tkinter.Entry(screen )
 birthday= tkinter.Label(screen, text = "birthday:")
 birthdayinp = tkinter.Entry(screen )
+edit = tkinter.Button(screen, text = "Edit" )
+delete = tkinter.Button(screen , text = "Delete")
+updateadd = tkinter.Button(screen , text= "update/add")
+save = tkinter.Button(screen , text="             save            ")
 
-emailinp = tkinter.Entry(screen )
-mobileinp = tkinter.Entry(screen )
-addressinp = tkinter.Entry(screen )
-title.grid(row=1,column= 1)
-open.grid(row=1,column= 2)
-box.grid(row=2,column= 1)
-name.grid(row=2,column= 2)
-nameinp.grid(row=2,column=3)
-title.grid(row=5,column= 2)
+adressbook={}
+def openn():
+    pass
+    
+def editt():
+    pass
+
+def deletee():
+    pass
+
+def updateaddd():
+    namee = nameinp.get()
+    adresss = addressinp.get()
+    mobilee = mobileinp.get()
+    emaill = emailinp.get()
+    birthdayy = birthdayinp.get()
+    adressbook[namee] = [adresss , mobilee , emaill , birthdayy]
+
+def updateboxx():
+    box.delete(0,tkinter.END)
+    for key in adressbook.keys():
+        box.insert(tkinter.END , key)
+
+def savee():
+    pass
 
 
+title.grid(row=1,column= 2)
+open.grid(row=1,column= 3)
+box.grid(row=2,column= 1 , rowspan=5, columnspan=2)
+name.grid(row=2,column= 3)
+nameinp.grid(row=2,column=4)
+address.grid(row=3 , column=3)
+addressinp.grid(row = 3 , column=4)
+mobile.grid(row = 4 , column = 3)
+mobileinp.grid(row = 4 , column=4)
+email.grid(row = 5 , column = 3)
+emailinp.grid(row = 5 , column = 4)
+birthday.grid(row = 6 , column = 3)
+birthdayinp.grid(row = 6 , column = 4)
+
+edit.grid(row = 7 , column =1)
+delete.grid(row = 7 , column = 2)
+updateadd.grid(row =7 , column = 4)
+save.grid(row =8 , column=1 , columnspan=5)
+
+screen.mainloop()
