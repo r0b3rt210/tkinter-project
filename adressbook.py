@@ -3,6 +3,56 @@ import tkinter.messagebox
 screen = tkinter.Tk()
 screen.geometry("450x650")
 screen.title("Address Book")
+
+
+adressbook={}
+def openn():
+    pass
+    
+
+
+
+def deletee():
+    index = box.curselection()
+    value= box.get(index)
+    del adressbook[value]
+    updateboxx()
+
+
+def updateaddd():
+    namee = nameinp.get()
+    adresss = addressinp.get()
+    mobilee = mobileinp.get()
+    emaill = emailinp.get()
+    birthdayy = birthdayinp.get()
+    adressbook[namee] = [adresss , mobilee , emaill , birthdayy]
+    updateboxx()
+
+def editt():
+    index = box.curselection()
+    value = box.get(index)
+    addres , mobil , emai , birthda = adressbook[value]
+    nameinp.insert(0 , value)
+    addressinp.insert(0, addres)
+    mobileinp.insert(0 , mobil)
+    emailinp.insert(0 , emai)
+    birthdayinp.insert(0 , birthda)
+
+def updateboxx():
+    box.delete(0,tkinter.END)
+    for key in adressbook.keys():
+        box.insert(tkinter.END , key)
+    nameinp.delete(0,tkinter.END)
+    addressinp.delete(0,tkinter.END)
+    mobileinp.delete(0,tkinter.END)
+    emailinp.delete(0,tkinter.END)
+    birthdayinp.delete(0,tkinter.END)
+
+def savee():
+    pass
+
+
+
 title = tkinter.Label(screen, text = "My Adress Book")
 open = tkinter.Button(screen , text = "Open")
 box = tkinter.Listbox(screen)
@@ -16,36 +66,12 @@ email= tkinter.Label(screen, text = "email:")
 emailinp = tkinter.Entry(screen )
 birthday= tkinter.Label(screen, text = "birthday:")
 birthdayinp = tkinter.Entry(screen )
-edit = tkinter.Button(screen, text = "Edit" )
-delete = tkinter.Button(screen , text = "Delete")
-updateadd = tkinter.Button(screen , text= "update/add")
+edit = tkinter.Button(screen, text = "Edit" , command= editt)
+delete = tkinter.Button(screen , text = "Delete" , command= deletee)
+updateadd = tkinter.Button(screen , text= "update/add" , command=updateaddd)
 save = tkinter.Button(screen , text="             save            ")
 
-adressbook={}
-def openn():
-    pass
-    
-def editt():
-    pass
 
-def deletee():
-    pass
-
-def updateaddd():
-    namee = nameinp.get()
-    adresss = addressinp.get()
-    mobilee = mobileinp.get()
-    emaill = emailinp.get()
-    birthdayy = birthdayinp.get()
-    adressbook[namee] = [adresss , mobilee , emaill , birthdayy]
-
-def updateboxx():
-    box.delete(0,tkinter.END)
-    for key in adressbook.keys():
-        box.insert(tkinter.END , key)
-
-def savee():
-    pass
 
 
 title.grid(row=1,column= 2)
