@@ -1,5 +1,6 @@
 import tkinter
 import tkinter.messagebox
+import tkinter.filedialog
 screen = tkinter.Tk()
 screen.geometry("450x650")
 screen.title("Address Book")
@@ -7,9 +8,17 @@ screen.title("Address Book")
 
 adressbook={}
 def openn():
-    pass
+    global adressbook
+    openfile = tkinter.filedialog.askopenfile()
+    if openfile != None:
+        adressbook= eval(openfile.readline())
+        updateboxx()
     
-
+def details():
+    index = box.curselection()
+    value = box.get(index)
+    detail=adressbook[value]
+    tkinter.messagebox.showinfo("details" , f"Name : {value}\n Adress : {detail[0]} \n Mobile : {detail[1]} \n Email : {detail[2]} \n Birthday : {detail[3]}")
 
 
 def deletee():
@@ -49,13 +58,16 @@ def updateboxx():
     birthdayinp.delete(0,tkinter.END)
 
 def savee():
-    pass
-
+    savedfile = tkinter.filedialog.asksaveasfile()
+    if savedfile != None:
+        print(adressbook , file = savedfile)
+        
 
 
 title = tkinter.Label(screen, text = "My Adress Book")
-open = tkinter.Button(screen , text = "Open")
+open = tkinter.Button(screen , text = "Open" , command = openn)
 box = tkinter.Listbox(screen)
+box.bind("<<ListboxSelect>>", details)
 name= tkinter.Label(screen, text = "name:")
 nameinp = tkinter.Entry(screen )
 address= tkinter.Label(screen, text = "address:")
@@ -69,7 +81,7 @@ birthdayinp = tkinter.Entry(screen )
 edit = tkinter.Button(screen, text = "Edit" , command= editt)
 delete = tkinter.Button(screen , text = "Delete" , command= deletee)
 updateadd = tkinter.Button(screen , text= "update/add" , command=updateaddd)
-save = tkinter.Button(screen , text="             save            ")
+save = tkinter.Button(screen , text="             save            " ,command= savee)
 
 
 
