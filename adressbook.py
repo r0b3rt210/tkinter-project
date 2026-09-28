@@ -14,7 +14,7 @@ def openn():
         adressbook= eval(openfile.readline())
         updateboxx()
     
-def details():
+def details(event):
     index = box.curselection()
     value = box.get(index)
     detail=adressbook[value]
