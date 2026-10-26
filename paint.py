@@ -1,0 +1,18 @@
+import tkinter
+screen = tkinter.Tk()
+screen.geometry("800x650")
+screen.title("paint")
+
+pen = tkinter.Button(screen , text="Pen")
+spraycan= tkinter.Button(screen ,text="spray can")
+color = tkinter.Button(screen , text="Color")
+eraser = tkinter.Button(screen , text="Eraser")
+scale  = tkinter.Scale(screen, from_= 1,to=100 , )
+canvas = tkinter.Canvas(screen , height=500 , width = 800, background="white")
+pen.grid(row = 1, column=1 )
+spraycan.grid(row = 1, column =2)
+color.grid(row =1 , column =3)
+eraser.grid(row =1 , column =4)
+scale.grid(row =1 , column =5)
+canvas.grid(row =2 , column =1 ,columnspan=5)
+screen.mainloop()
