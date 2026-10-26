@@ -59,8 +59,9 @@ jw = ["apple","banana","cherry","dragon","island","palace","statue","temple","de
       "waterfall","cascade","geyser","aquifer","reservoir","cistern","fountain","artesian","estuary","harbor","marina","dockyard","wharf","pier",
       "jetty","quay","haven","inlet","cove","bayou","gulf","strait","channel","sound","basin","reach","roadstead","anchorage" ]
 now = 499
+userwins= 0
 def jumble():
-    global now
+    global now, jumbled , wordgenerated
     wordgenerated = jw[random.randint(0,now)]
     now = 499-1
     lettertbj = []
@@ -68,18 +69,34 @@ def jumble():
         lettertbj.append(wordgenerated[i])
     jw.remove(wordgenerated)
     random.shuffle(lettertbj)
-    jw = "".join(lettertbj)
+    jumbled = "".join(lettertbj)
+    jumbledword.config(text = jumbled)
+
+def answer():
+    global wordgenerated , userwins
+    user = useranswer.get()
+    if wordgenerated == user:
+        tkinter.messagebox.showinfo(title = "winner" , message="well done , you got the answer correct." )
+        userwins = userwins+1
+        userwinZ.config(text=f"you won {userwins} games")
+        jumble()
+        useranswer.delete(0 , tkinter.END)
+    elif wordgenerated != user:
+        tkinter.messagebox.showwarning(title="incorrect" , message = "incorrect try again ")
 
 
-jumbledword = tkinter.Label(screen , text = wordgenerated  , font = ("arial ", 15))
+userwinZ = tkinter.Label(screen , text=f"you won {userwins} games", font =( "arial", 15))
+jumbledword = tkinter.Label(screen , text = ""  , font = ("arial ", 15))
 useranswer = tkinter.Entry(screen , font=("arial" , 20))
-enter = tkinter.Button(screen , text = "Enter" , background="dark gray" , fg = "yellow" , font=("arial"  , 25))
-reset = tkinter.Button(screen, text = "Reset" , background = "gray" , fg = "yellow" , font= ("arial ",25))
+enter = tkinter.Button(screen , text = "Enter" , background="dark gray" , fg = "yellow" , font=("arial"  , 25) , command= answer)
+next = tkinter.Button(screen, text = "Next" , background = "gray" , fg = "yellow" , font= ("arial ",25), command=jumble)
+jumble()
 titlee.pack(pady= 20)
+userwinZ.pack(pady=10)
 jumbledword.pack(pady = 10)
 useranswer.pack(pady = 10)
 enter.pack(pady = 10)
-reset.pack(pady = 10)
+next.pack(pady = 10)
 
 
 
