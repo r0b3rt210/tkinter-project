@@ -8,25 +8,30 @@ size = 5
 py = None 
 px = None
 eraseron = False
-
+penon= True
 def penselected():
-    pass
+    global penon ,eraseron
+    penon=True
+    eraseron=False
 def spraycanselected():
     pass
 def colorselected():
     global colour
     colour=askcolor()[1]
 def eraserselected():
-    global eraser
-    eraser=True
+    global penon
+    global eraseron
+    eraseron=True
+    penon = False
+    
 def paint(event):
     global px , py 
     size=scale.get()
-    pencolor = colour
     if eraseron==True:
         pencolor = "white"
-
-    if py and px :
+    if penon==True:
+        pencolor = colour
+    if py and px :    
         canvas.create_line(px,py,event.x,event.y , width=size ,fill=pencolor, capstyle=tkinter.ROUND)
     py=event.y
     px = event.x
